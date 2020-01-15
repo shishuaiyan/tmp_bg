@@ -21,6 +21,10 @@ class RemoveBg:
         """
         size: preview 为预览模式，每个月有50张免费额度
         type: auto/person/product/car   注意：动漫图片无法检测
+        format: png/jpg/zip
+                png: 一体化图片，支持透明，文件size较大
+                jpg: 一体化图片，不支持透明，文件size小
+                zip: 输出蒙版+源文件，支持透明，文件size小
         roi: 人工使用矩形框出需要检测的部分，"x1px y1px x2px y2px" or "x1% y1% x2% y2%"
         """
         if self.__judge_source(str_img) == 1:
@@ -161,5 +165,6 @@ class RemoveBg:
 if __name__ == '__main__':
     api_key = 'iWgsewfSYZi7ZrxPCXBRi61R'
     remove_bg = RemoveBg(api_key, './error_log.txt')
-    remove_bg.run(r'D:\code\11.jpg', r'D:\code', roi="300px 300px 900px 900px")
+    # remove_bg.run(r'D:\code\11.jpg', r'D:\code', roi="300px 300px 900px 900px")
+    remove_bg.run('./tt.jpg', './', format='zip')
     # remove_bg.run('http://st2.depositphotos.com/1211250/11537/i/950/depositphotos_115371752-stock-photo-couple-in-love-and-vintage.jpg', r'D:\code')
